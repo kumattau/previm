@@ -1,6 +1,16 @@
 (function(_doc, _win) {
   var REFRESH_INTERVAL = 1000;
 
+  marked.setOptions({
+    highlight: function (code, lang) {
+      if (lang) {
+        return hljs.highlight(lang, code).value;
+      } else {
+        return hljs.highlightAuto(code).value;
+      }
+    }
+  });
+
   function loadPreview() {
     // These functions are defined as the file generated dynamically.
     //   generator-file: preview/autoload/previm.vim
